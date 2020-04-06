@@ -1,0 +1,950 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val SPARK_HOME = System.getenv(\"SPARK_HOME\")\n\nval df1 = spark.read.json(s\"/home/mdalban/Téléchargements/part-00000.json\")\ndf1.printSchema\ndf1.show()",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:43+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- date: string (nullable = true)\n |-- droneid: string (nullable = true)\n |-- housenumber: string (nullable = true)\n |-- state: string (nullable = true)\n |-- streetcode: string (nullable = true)\n |-- vehiculebrand: string (nullable = true)\n |-- vehiculecolor: string (nullable = true)\n |-- vehiculetype: string (nullable = true)\n |-- vehiculeyear: string (nullable = true)\n |-- violationcode: string (nullable = true)\n\n+----------+-------+-----------+-----+----------+-------------+-------------+------------+------------+-------------+\n|      date|droneid|housenumber|state|streetcode|vehiculebrand|vehiculecolor|vehiculetype|vehiculeyear|violationcode|\n+----------+-------+-----------+-----+----------+-------------+-------------+------------+------------+-------------+\n| 7/11/2017|    339|        206|   NY|       932|       NISSAN|        BROWN|        SUBN|        1994|           89|\n|21/11/2018|    782|         81|   NY|       761|        HONDA|          RED|        SUBN|        2018|           90|\n| 27/1/2018|    748|        135|   NY|       878|        LEXUS|         BLEU|        SUBN|        2003|           83|\n| 23/5/2015|    926|         93|   NY|      1369|        ROVER|        WHITE|        SUBN|        2003|           90|\n|13/10/2019|    179|        149|   NY|       226|         FORD|          RED|        SUBN|        1994|           25|\n|  9/6/2015|    369|        178|   NY|      1282|          BMW|        WHITE|         VAN|        2001|           15|\n| 15/3/2019|    411|         91|   NY|      1793|          BMW|        BROWN|        MINI|        1997|           27|\n|15/10/2019|     23|        148|   NY|        66|        HONDA|       SILVER|         VAN|        1990|            4|\n|  1/2/2017|    630|         78|   NY|       590|        LEXUS|       SILVER|        TAXI|        2004|           96|\n| 28/5/2017|    153|        165|   NY|      1943|        LEXUS|          RED|        SUBN|        1998|           73|\n| 12/3/2015|    935|        157|   NY|      1129|       NISSAN|         BLEU|         VAN|        2008|        alert|\n| 29/4/2015|    818|        143|   NY|      1493|        ROVER|          RED|        PICK|        2007|           47|\n| 17/2/2018|    522|        233|   NY|      1480|         FORD|          RED|        PICK|        2000|           96|\n| 29/2/2016|    132|         20|   NY|       648|       NISSAN|        BLACK|        PICK|        1999|           99|\n| 29/4/2016|    409|         88|   NY|      1319|        ROLLS|        BLACK|         VAN|        2017|           52|\n| 14/8/2019|    814|         45|   NY|      1566|          BMW|          RED|         VAN|        2015|           31|\n| 5/10/2018|    540|         48|   NY|      1475|         FORD|          RED|        MINI|        2004|           55|\n| 18/6/2019|    517|         72|   NY|      1697|        HONDA|          RED|        SUBN|        2003|           13|\n|29/10/2017|    976|        105|   NY|       328|       NISSAN|         GREY|        TANK|        2006|           71|\n| 14/1/2019|    852|        214|   NY|       133|        HONDA|        WHITE|         VAN|        1996|           62|\n+----------+-------+-----------+-----+----------+-------------+-------------+------------+------------+-------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mSPARK_HOME\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = \"\"\n\u001b[1m\u001b[34mdf1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [date: string, droneid: string ... 8 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=155",
+              "$$hashKey": "object:33146"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=156",
+              "$$hashKey": "object:33147"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586044326958_437319658",
+      "id": "paragraph_1586044326958_437319658",
+      "dateCreated": "2020-04-05T01:52:06+0200",
+      "dateStarted": "2020-04-05T21:55:43+0200",
+      "dateFinished": "2020-04-05T21:55:45+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26847"
+    },
+    {
+      "text": "%spark\n\nval df2 = df1.groupBy(\"state\").count()\nz.show(df2)",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:45+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "state": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "state",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "state\tcount\nAZ\t551\nSC\t467\nNS\t18\nLA\t76\nMN\t415\nNJ\t22613\nDC\t104\nOR\t136\n99\t516\nVA\t1502\nRI\t351\nKY\t88\nWY\t11\nBC\t4\nNH\t200\nMI\t420\nNV\t66\nGV\t14\nQB\t126\nWI\t115\nID\t173\nCA\t493\nCT\t3226\nNE\t48\nMT\t22\nNC\t1098\nVT\t176\nMD\t1260\nDE\t326\nMO\t68\nIL\t867\nME\t412\nMB\t1\nWA\t137\nND\t12\nMS\t107\nAL\t149\nIN\t2069\nOH\t561\nTN\t424\nIA\t149\nNM\t81\nPA\t5681\nSD\t23\nNY\t191606\nON\t142\nSK\t1\nAB\t11\nPE\t2\nTX\t663\nWV\t49\nGA\t699\nMA\t2073\nKS\t48\nFL\t2796\nCO\t95\nAK\t29\nAR\t76\nNB\t7\nOK\t476\nPR\t2\nUT\t28\nDP\t88\nHI\t21\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdf2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [state: string, count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=157",
+              "$$hashKey": "object:33420"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=158",
+              "$$hashKey": "object:33421"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=159",
+              "$$hashKey": "object:33422"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=160",
+              "$$hashKey": "object:33423"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=161",
+              "$$hashKey": "object:33424"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586105747417_-1794383257",
+      "id": "paragraph_1586105747417_-1794383257",
+      "dateCreated": "2020-04-05T18:55:47+0200",
+      "dateStarted": "2020-04-05T21:55:45+0200",
+      "dateFinished": "2020-04-05T21:55:49+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26848"
+    },
+    {
+      "text": "%spark\n\nval df3 = df1.groupBy(\"vehiculebrand\").count()\nz.show(df3)",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:49+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "vehiculebrand": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "vehiculebrand",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 92.8,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "vehiculebrand\tcount\nBOX\t1\nPETER\t986\nFREG\t4\nWINN\t1\nINETR\t1\nYAMAH\t76\nFREIG\t59\nFHT\t1\nUTI\t1\nIC\t31\nGRT D\t1\nSTAK\t1\nMECER\t1\nFOR /\t1\nWAB\t3\nMIC\t1\nFOD\t1\nNS\t1\nACURA\t4362\nWORKV\t1\nKENWO\t934\nUNIV\t8\nUT/M\t10\nREFG\t2\nINFIF\t1\nMO/V\t1\nFLINC\t1\nWORKW\t1\nMAGIR\t2\nWHITE\t16\nMOET\t1\nMMW\t1\nROVER\t1481\nTESL\t15\nBL/B\t12\nFEDE\t2\nOLDSI\t1\nHARLE\t56\nRO/R\t5\nCJTRO\t1\nMASSA\t92\nINTER\t8730\nMI/F\t271\nFRIE\t12\nAUTOC\t9\nGRUMM\t9\nKENTU\t5\nTHOMA\t34\nBAEWO\t2\nAS/M\t2\nFI/LI\t1\nSATUA\t1\nWIRKH\t1\nMALDO\t1\nPOTER\t2\nFRGH\t8\nTOYOT\t23480\nPETE\t1\nWRKHO\t1\nINFL\t1\nMERSU\t1\nWA/RA\t1\nFIAT\t256\nCARY\t1\nCUST\t2\nVALHO\t1\nYNHY\t1\nVWJET\t1\nYUGO\t2\nHIND\t2\nMAYB\t1\nINFNI\t1\nDATSU\t6\nFTLI\t1\nPINN\t1\nHOME\t3\nSTAO\t1\nGILL\t4\nVA/HO\t3\nMONN\t1\nWKHS\t2\nST/A\t1\nME/BE\t8019\nJENSE\t5\nINTR\t2\nLA RO\t15\nFRUEH\t10024\nMU/FU\t1\nINFIT\t1\nTRIUM\t35\nRA RO\t1\nFORSA\t1\nIW\t1\nPORSC\t460\nHIGHW\t2\nHONDY\t1\nVAN\t2\nNISSAN\t9\nSTRA\t1\n3VZ7\t1\nFRGT\t1\nMOTOL\t1\nFHTL\t13\nSUKZU\t1\nPET\t1\nCHER\t1\nTU/T\t1\nZIM\t1\nBAJAJ\t1\nBRIDG\t2\nHUMBE\t12\nWRKHS\t1\nBSA\t2\nHINO\t2438\nLR/FR\t1\nKEW\t1\nFORD\t32959\nAUDI\t2734\nMANC\t1\nRENAU\t2\nSETR\t13\nLWT\t1\nFRIGH\t2\nROCK\t1\nSUBAR\t2753\nFRLI\t1\nISUZU\t3312\nDORSE\t18\nMINI\t550\nINTO\t1\nHADAY\t1\nPREVO\t41\nSAAB\t317\nSTERL\t337\nLA/RD\t1\nFRAT\t1\nCHRYS\t4273\nWORKH\t1351\nFUSO\t5\nFT LI\t2\nWORKS\t1\nWK/H\t3\nSRF\t1\nTIFF\t1\nWO/H\t8\nHIN\t5\nTHEUR\t6\nHYHND\t1\nMI FU\t1\nPIAGG\t1\nRNG/R\t1\nDODGE\t8418\nCHECK\t35\nWO/HS\t1\nVICDO\t1\nGIL\t2\nMORGA\t3\nFONTA\t38\nKAWAS\t96\nPB\t2\nJINO\t3\nSIMCA\t1\nCOA\t1\nSUNBE\t8\nJLBM\t1\nME\t1\nPBELT\t1\nLERO\t1\nUNTIL\t1\nVAHNO\t1\nFT/L\t1\nNEW\t2\nK/W\t1\nFRIG\t2\nFRL\t2\nSTARC\t1\nL/R\t1\nSTEEL\t1\nVA/H\t7\nAPRIL\t1\nNMD\t1\nHURR\t1\nLEXUS\t4868\nGREAT\t36\nWORHK\t1\nCHRI\t1\nUD\t461\nJEEP\t6155\nWANC\t1\nNISSA\t17768\nVOLVO\t1839\nVN/H\t6\nVOLSM\t1\nMCI\t102\nKNO\t1\nLINCO\t2534\nTESLA\t2\nMERLY\t1\nWO/C\t17\nMARLC\t2\nSTOUG\t1\nWO/HO\t1\nRCICY\t1\nUTILY\t1\nMAZDA\t2486\nCHAYE\t1\nFLEE\t2\nFRIEG\t4\nCLINC\t1\nFR\t1\nFREI\t4\nPLMOT\t1\nBMW\t7626\nFERRA\t46\nGRUEH\t3\nDDOG\t1\nMG\t5\nHIGL\t1\nKENMO\t1\nANCIA\t7\nBERI\t2\nSTRIC\t8\nLAMBO\t3\nTEMS\t3\nCOMM\t1\nMACH\t1\nWORK\t278\nAMC\t11\nNN\t1\nSUZUK\t194\nMICKE\t3\nGEO\t61\nDIAHA\t2\nUP\t1\nLEXU\t1\nRYDER\t1\nROVLL\t1\nDAEWO\t10\nGREY\t1\nCADU\t1\nBENSO\t1\nANKA\t1\nTRAIL\t122\nALT\t1\nVOLKS\t4328\nVESPA\t135\nALEXA\t2\nVAN H\t117\nSTL\t7\nVESP\t1\nWOCH\t1\nCADIL\t1929\nBERTO\t15\nMACE\t1\nFCWT\t1\nHONF\t1\nALBKR\t2\nW\t1\nSPAH\t1\nKIA\t2066\nVANHO\t41\nSTUDE\t1\nLODC\t1\nHONDA\t21666\nHINOU\t1\nGIDNY\t8\nDIAMO\t8\nCATIL\t1\nWILME\t1\nTURT\t1\nDONG\t1\nGMC\t7721\nDUCAT\t35\nBLUE\t3\nUNIFL\t15\nINIFI\t1\nAL/R\t2\nDIVC\t1\nVOVL\t1\nMERCU\t1622\nPREV\t16\nMITSU\t3124\nDELV\t1\nFTLNR\t2\nSMART\t327\nGRIMM\t1\nINFIN\t3274\nSCION\t175\nSPRI\t54\nHNO\t1\nUL/U\t1\nOSHKO\t2\nMETRO\t1\nCOLL\t2\nROLLS\t15\nWO/CH\t4\nGDAVE\t1\nIN.\t1\nBLOCK\t1\nSPO\t2\nUTICA\t1\nFRD\t2\nTAN\t1\nRAGE\t1\nMCLA\t1\nFT/LI\t3\nLO CH\t1\nNS/OT\t3966\nSATUR\t628\nGLAS\t2\nMICK\t1\nMIITS\t1\nLISMO\t1\nU/W\t1\nUTIL\t290\nMBSP\t2\nOLDSM\t187\nHYUND\t5155\nFR LN\t1\nFRG\t1\nKW\t32\nMACK\t767\nWH\t3\nEAST\t3\nKAUFM\t1\nLOTUS\t4\nSUPR\t2\nNAVIS\t67\nBL/BI\t2\nFR/L\t9\nAC\t1\nHUMME\t111\nPONTI\t668\nTNTE\t1\nMACUT\t1\nUTILI\t12\nCOTTR\t1\nOW\t1\nWD3\t1\nFR L\t1\nGET\t1\nKENI\t2\nAUSTI\t2\nSTAR\t18\nCHDIT\t1\nWE/S\t1\nTHE\t1\nGSCR\t1\nBENTL\t34\nIZ\t1\nVPG\t4\nMJ/FY\t1\nPTRB\t1\nMER\t1\nCITRO\t3\nFRTL\t6\nBETHA\t1\nKENW\t4\nBRIMA\t1\nCHEVR\t19672\nSOBAR\t2\nTLR\t1\nW HOR\t1\nTRACT\t2\nMERAD\t1\nKRYS\t4\nFR/LI\t6\nBUICK\t970\nUPS\t85\nALFAR\t4\nNAVI\t2\nJAGUA\t339\nWK\t1\nTI BR\t1\nWRK H\t2\nPLYMO\t194\nUNIVE\t1\nCJEV\t1\nMONO\t1\nFRGHT\t1\nDOLE\t1\nHMD\t1\nKENIL\t1\nSMITH\t66\nAJAX\t5\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdf3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [vehiculebrand: string, count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=162",
+              "$$hashKey": "object:33828"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=163",
+              "$$hashKey": "object:33829"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=164",
+              "$$hashKey": "object:33830"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=165",
+              "$$hashKey": "object:33831"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=166",
+              "$$hashKey": "object:33832"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586107033005_729036443",
+      "id": "paragraph_1586107033005_729036443",
+      "dateCreated": "2020-04-05T19:17:13+0200",
+      "dateStarted": "2020-04-05T21:55:49+0200",
+      "dateFinished": "2020-04-05T21:55:53+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26849"
+    },
+    {
+      "text": "%spark\n\ndf1.createOrReplaceTempView(\"people\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:53+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586107821024_-773083954",
+      "id": "paragraph_1586107821024_-773083954",
+      "dateCreated": "2020-04-05T19:30:21+0200",
+      "dateStarted": "2020-04-05T21:55:53+0200",
+      "dateFinished": "2020-04-05T21:55:53+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26850"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT COUNT(state), vehiculebrand FROM people GROUP BY vehiculebrand",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:53+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 314,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "count(state)": "string",
+                      "vehiculebrand": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stream"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "vehiculebrand",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(state)",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "count(state)\tvehiculebrand\n1\tBOX\n986\tPETER\n4\tFREG\n1\tWINN\n1\tINETR\n76\tYAMAH\n59\tFREIG\n1\tFHT\n1\tUTI\n31\tIC\n1\tGRT D\n1\tSTAK\n1\tMECER\n1\tFOR /\n3\tWAB\n1\tMIC\n1\tFOD\n1\tNS\n4362\tACURA\n1\tWORKV\n934\tKENWO\n8\tUNIV\n10\tUT/M\n2\tREFG\n1\tINFIF\n1\tMO/V\n1\tFLINC\n1\tWORKW\n2\tMAGIR\n16\tWHITE\n1\tMOET\n1\tMMW\n1481\tROVER\n15\tTESL\n12\tBL/B\n2\tFEDE\n1\tOLDSI\n56\tHARLE\n5\tRO/R\n1\tCJTRO\n92\tMASSA\n8730\tINTER\n271\tMI/F\n12\tFRIE\n9\tAUTOC\n9\tGRUMM\n5\tKENTU\n34\tTHOMA\n2\tBAEWO\n2\tAS/M\n1\tFI/LI\n1\tSATUA\n1\tWIRKH\n1\tMALDO\n2\tPOTER\n8\tFRGH\n23480\tTOYOT\n1\tPETE\n1\tWRKHO\n1\tINFL\n1\tMERSU\n1\tWA/RA\n256\tFIAT\n1\tCARY\n2\tCUST\n1\tVALHO\n1\tYNHY\n1\tVWJET\n2\tYUGO\n2\tHIND\n1\tMAYB\n1\tINFNI\n6\tDATSU\n1\tFTLI\n1\tPINN\n3\tHOME\n1\tSTAO\n4\tGILL\n3\tVA/HO\n1\tMONN\n2\tWKHS\n1\tST/A\n8019\tME/BE\n5\tJENSE\n2\tINTR\n15\tLA RO\n10024\tFRUEH\n1\tMU/FU\n1\tINFIT\n35\tTRIUM\n1\tRA RO\n1\tFORSA\n1\tIW\n460\tPORSC\n2\tHIGHW\n1\tHONDY\n2\tVAN\n9\tNISSAN\n1\tSTRA\n1\t3VZ7\n1\tFRGT\n1\tMOTOL\n13\tFHTL\n1\tSUKZU\n1\tPET\n1\tCHER\n1\tTU/T\n1\tZIM\n1\tBAJAJ\n2\tBRIDG\n12\tHUMBE\n1\tWRKHS\n2\tBSA\n2438\tHINO\n1\tLR/FR\n1\tKEW\n32959\tFORD\n2734\tAUDI\n1\tMANC\n2\tRENAU\n13\tSETR\n1\tLWT\n2\tFRIGH\n1\tROCK\n2753\tSUBAR\n1\tFRLI\n3312\tISUZU\n18\tDORSE\n550\tMINI\n1\tINTO\n1\tHADAY\n41\tPREVO\n317\tSAAB\n337\tSTERL\n1\tLA/RD\n1\tFRAT\n4273\tCHRYS\n1351\tWORKH\n5\tFUSO\n2\tFT LI\n1\tWORKS\n3\tWK/H\n1\tSRF\n1\tTIFF\n8\tWO/H\n5\tHIN\n6\tTHEUR\n1\tHYHND\n1\tMI FU\n1\tPIAGG\n1\tRNG/R\n8418\tDODGE\n35\tCHECK\n1\tWO/HS\n1\tVICDO\n2\tGIL\n3\tMORGA\n38\tFONTA\n96\tKAWAS\n2\tPB\n3\tJINO\n1\tSIMCA\n1\tCOA\n8\tSUNBE\n1\tJLBM\n1\tME\n1\tPBELT\n1\tLERO\n1\tUNTIL\n1\tVAHNO\n1\tFT/L\n2\tNEW\n1\tK/W\n2\tFRIG\n2\tFRL\n1\tSTARC\n1\tL/R\n1\tSTEEL\n7\tVA/H\n1\tAPRIL\n1\tNMD\n1\tHURR\n4868\tLEXUS\n36\tGREAT\n1\tWORHK\n1\tCHRI\n461\tUD\n6155\tJEEP\n1\tWANC\n17768\tNISSA\n1839\tVOLVO\n6\tVN/H\n1\tVOLSM\n102\tMCI\n1\tKNO\n2534\tLINCO\n2\tTESLA\n1\tMERLY\n17\tWO/C\n2\tMARLC\n1\tSTOUG\n1\tWO/HO\n1\tRCICY\n1\tUTILY\n2486\tMAZDA\n1\tCHAYE\n2\tFLEE\n4\tFRIEG\n1\tCLINC\n1\tFR\n4\tFREI\n1\tPLMOT\n7626\tBMW\n46\tFERRA\n3\tGRUEH\n1\tDDOG\n5\tMG\n1\tHIGL\n1\tKENMO\n7\tANCIA\n2\tBERI\n8\tSTRIC\n3\tLAMBO\n3\tTEMS\n1\tCOMM\n1\tMACH\n278\tWORK\n11\tAMC\n1\tNN\n194\tSUZUK\n3\tMICKE\n61\tGEO\n2\tDIAHA\n1\tUP\n1\tLEXU\n1\tRYDER\n1\tROVLL\n10\tDAEWO\n1\tGREY\n1\tCADU\n1\tBENSO\n1\tANKA\n122\tTRAIL\n1\tALT\n4328\tVOLKS\n135\tVESPA\n2\tALEXA\n117\tVAN H\n7\tSTL\n1\tVESP\n1\tWOCH\n1929\tCADIL\n15\tBERTO\n1\tMACE\n1\tFCWT\n1\tHONF\n2\tALBKR\n1\tW\n1\tSPAH\n2066\tKIA\n41\tVANHO\n1\tSTUDE\n1\tLODC\n21666\tHONDA\n1\tHINOU\n8\tGIDNY\n8\tDIAMO\n1\tCATIL\n1\tWILME\n1\tTURT\n1\tDONG\n7721\tGMC\n35\tDUCAT\n3\tBLUE\n15\tUNIFL\n1\tINIFI\n2\tAL/R\n1\tDIVC\n1\tVOVL\n1622\tMERCU\n16\tPREV\n3124\tMITSU\n1\tDELV\n2\tFTLNR\n327\tSMART\n1\tGRIMM\n3274\tINFIN\n175\tSCION\n54\tSPRI\n1\tHNO\n1\tUL/U\n2\tOSHKO\n1\tMETRO\n2\tCOLL\n15\tROLLS\n4\tWO/CH\n1\tGDAVE\n1\tIN.\n1\tBLOCK\n2\tSPO\n1\tUTICA\n2\tFRD\n1\tTAN\n1\tRAGE\n1\tMCLA\n3\tFT/LI\n1\tLO CH\n3966\tNS/OT\n628\tSATUR\n2\tGLAS\n1\tMICK\n1\tMIITS\n1\tLISMO\n1\tU/W\n290\tUTIL\n2\tMBSP\n187\tOLDSM\n5155\tHYUND\n1\tFR LN\n1\tFRG\n32\tKW\n767\tMACK\n3\tWH\n3\tEAST\n1\tKAUFM\n4\tLOTUS\n2\tSUPR\n67\tNAVIS\n2\tBL/BI\n9\tFR/L\n1\tAC\n111\tHUMME\n668\tPONTI\n1\tTNTE\n1\tMACUT\n12\tUTILI\n1\tCOTTR\n1\tOW\n1\tWD3\n1\tFR L\n1\tGET\n2\tKENI\n2\tAUSTI\n18\tSTAR\n1\tCHDIT\n1\tWE/S\n1\tTHE\n1\tGSCR\n34\tBENTL\n1\tIZ\n4\tVPG\n1\tMJ/FY\n1\tPTRB\n1\tMER\n3\tCITRO\n6\tFRTL\n1\tBETHA\n4\tKENW\n1\tBRIMA\n19672\tCHEVR\n2\tSOBAR\n1\tTLR\n1\tW HOR\n2\tTRACT\n1\tMERAD\n4\tKRYS\n6\tFR/LI\n970\tBUICK\n85\tUPS\n4\tALFAR\n2\tNAVI\n339\tJAGUA\n1\tWK\n1\tTI BR\n2\tWRK H\n194\tPLYMO\n1\tUNIVE\n1\tCJEV\n1\tMONO\n1\tFRGHT\n1\tDOLE\n1\tHMD\n1\tKENIL\n66\tSMITH\n5\tAJAX\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=167",
+              "$$hashKey": "object:34118"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=168",
+              "$$hashKey": "object:34119"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=169",
+              "$$hashKey": "object:34120"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=170",
+              "$$hashKey": "object:34121"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=171",
+              "$$hashKey": "object:34122"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586108437956_-1848581889",
+      "id": "paragraph_1586108437956_-1848581889",
+      "dateCreated": "2020-04-05T19:40:37+0200",
+      "dateStarted": "2020-04-05T21:55:53+0200",
+      "dateFinished": "2020-04-05T21:55:57+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26851"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT COUNT(state), vehiculetype FROM people GROUP BY vehiculetype",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:55:57+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 388,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "count(state)": "string",
+                      "vehiculetype": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "expand"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "vehiculetype",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(state)",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "count(state)\tvehiculetype\n100\tBOAT\n7\tTRK\n1\tRF\n159\tSTAK\n1\tBLK\n1\tNS\n5\tR/RD\n2294\tREFG\n67\tBS\n1\tBW\n1\tDSD\n1\tAPP\n2\tTRAL\n2\tISIA\n1238\tBUS\n48\tSEMI\n3\tCUST\n1\tFIAT\n11\tTRC\n1\tSMAR\n7\tTRT\n2\tHRSE\n68650\t4DSD\n69\tFOUR\n1\tE\n1\tIZN\n1\tRI\n40345\tVAN\n2\tSCHO\n4\tLTRL\n1\tTOWT\n1\tTIT\n1\tGRAY\n3\tCOUP\n259\tTR/C\n15\tMCC\n1134\tTAXI\n1\tFORD\n1\tREG\n3\tSUV\n7\tMINI\n1\tPENW\n1\tBLAC\n1\tL\n105\tSWT\n3\tRPLC\n1\tFRHT\n1\tFB\n26\tW/DR\n1\tNR\n3\tREFR\n1\tINT\n67\tTR\n17\tTWOD\n21\tP/SH\n6\tSN/P\n39\tTRAI\n16\tS/SP\n1\tTYIN\n2\tPOLE\n2\tWAGO\n1\tRS\n1\tJEEP\n1\tJ\n1\tHWH\n19\tMOTO\n1\tBK\n7\tEMVR\n1867\tTRAC\n1\tTRFZ\n7\tFREI\n1\tFIVE\n124\tSEDN\n76838\tSUBN\n1\tTRR\n1123\tCONV\n388\tFLAT\n1\tRBM\n10\tTL\n8858\tSDN\n3\tN\n9\tMC\n1\tVESP\n1\tUTIY\n1\tRD/S\n4\tS\n2\tII\n2\tBOXT\n3\tUTL\n1\tR\n1\tLIVE\n1\tTRCT\n1\tMED\n1\tGMC\n20578\tDELV\n21\tMOBL\n10\tTRAV\n922\tTRLR\n2\tTMLC\n2\tSTAT\n2\tREF\n1\tSI\n2147\tUTIL\n16\tH/WH\n4\tI\n1\tRCRD\n78\tTOW\n6\tCMIX\n2\tRV\n6834\t2DSD\n1\tFLNK\n7\tTT\n6875\tPICK\n25\tTRL\n1\tTNT\n36\tLIM\n2\tREFI\n541\tP-U\n1\tTF\n4\tTLR\n1\tTRCK\n304\tDUMP\n7\tMOT\n638\tTK\n1\tLIV\n42\tTRUC\n1\tVEHI\n18\tTR/E\n1\tUT\n656\tMCY\n1\tJII\n381\tT/CR\n50\tTANK\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=172",
+              "$$hashKey": "object:34413"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=173",
+              "$$hashKey": "object:34414"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=174",
+              "$$hashKey": "object:34415"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=175",
+              "$$hashKey": "object:34416"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=176",
+              "$$hashKey": "object:34417"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586108478067_-1324549808",
+      "id": "paragraph_1586108478067_-1324549808",
+      "dateCreated": "2020-04-05T19:41:18+0200",
+      "dateStarted": "2020-04-05T21:55:57+0200",
+      "dateFinished": "2020-04-05T21:56:00+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26852"
+    },
+    {
+      "text": "%spark.sql\n\nSELECT COUNT(violationcode), date FROM people GROUP BY date  ORDER BY date desc",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:56:00+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "stackedAreaChart",
+              "height": 344,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "count(violationcode)": "string",
+                      "date": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "date",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(violationcode)",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "count(violationcode)\tdate\n1\t9/7/2019\n1\t9/6/2018\n1\t9/6/2015\n1\t8/9/2015\n1\t7/2/2016\n1\t7/11/2017\n1\t6/3/2019\n1\t5/9/2019\n1\t5/8/2017\n1\t5/6/2018\n1\t5/10/2018\n1\t4/9/2018\n1\t4/5/2019\n1\t3/3/2015\n1\t29/4/2016\n1\t29/4/2015\n1\t29/2/2016\n2\t29/10/2017\n1\t28/5/2017\n1\t27/7/2019\n1\t27/11/2016\n1\t27/1/2018\n1\t27/1/2016\n1\t26/9/2016\n1\t24/4/2018\n1\t23/5/2015\n1\t21/9/2016\n1\t21/11/2018\n1\t20/10/2018\n1\t19/7/2019\n1\t19/7/2015\n1\t19/2/2017\n1\t18/6/2019\n1\t18/10/2015\n1\t17/5/2017\n1\t17/3/2015\n1\t17/2/2018\n1\t15/3/2019\n1\t15/10/2019\n1\t14/8/2019\n1\t14/5/2016\n1\t14/1/2019\n1\t13/10/2019\n1\t12/4/2018\n773\t12/31/2014\n957\t12/30/2014\n1\t12/3/2015\n855\t12/29/2014\n99\t12/28/2014\n169\t12/27/2014\n568\t12/26/2014\n30\t12/25/2014\n355\t12/24/2014\n488\t12/23/2014\n464\t12/22/2014\n138\t12/21/2014\n483\t12/20/2014\n668\t12/19/2014\n680\t12/18/2014\n1\t12/18/2013\n695\t12/17/2014\n1\t12/17/2012\n684\t12/16/2014\n653\t12/15/2014\n160\t12/14/2014\n362\t12/13/2014\n726\t12/12/2014\n1\t12/12/2000\n1\t12/11/2018\n722\t12/11/2014\n624\t12/10/2014\n425\t12/09/2014\n558\t12/08/2014\n140\t12/07/2014\n298\t12/06/2014\n497\t12/05/2014\n624\t12/04/2014\n575\t12/03/2014\n661\t12/02/2014\n680\t12/01/2014\n140\t11/30/2014\n448\t11/29/2014\n976\t11/28/2014\n66\t11/27/2014\n427\t11/26/2014\n781\t11/25/2014\n1\t11/25/2012\n682\t11/24/2014\n206\t11/23/2014\n1\t11/23/2000\n582\t11/22/2014\n768\t11/21/2014\n840\t11/20/2014\n702\t11/19/2014\n778\t11/18/2014\n513\t11/17/2014\n179\t11/16/2014\n563\t11/15/2014\n743\t11/14/2014\n782\t11/13/2014\n751\t11/12/2014\n515\t11/11/2014\n807\t11/10/2014\n169\t11/09/2014\n535\t11/08/2014\n766\t11/07/2014\n694\t11/06/2014\n698\t11/05/2014\n455\t11/04/2014\n670\t11/03/2014\n125\t11/02/2014\n389\t11/01/2014\n657\t10/31/2014\n770\t10/30/2014\n649\t10/29/2014\n738\t10/28/2014\n681\t10/27/2014\n158\t10/26/2014\n466\t10/25/2014\n877\t10/24/2014\n641\t10/23/2014\n707\t10/22/2014\n875\t10/21/2014\n783\t10/20/2014\n1\t10/20/2012\n1\t10/2/2019\n1\t10/2/2018\n218\t10/19/2014\n512\t10/18/2014\n747\t10/17/2014\n613\t10/16/2014\n1\t10/16/2010\n726\t10/15/2014\n876\t10/14/2014\n440\t10/13/2014\n176\t10/12/2014\n499\t10/11/2014\n713\t10/10/2014\n725\t10/09/2014\n834\t10/08/2014\n866\t10/07/2014\n715\t10/06/2014\n169\t10/05/2014\n400\t10/04/2014\n870\t10/03/2014\n868\t10/02/2014\n785\t10/01/2014\n1\t1/2/2017\n883\t09/30/2014\n763\t09/29/2014\n177\t09/28/2014\n475\t09/27/2014\n650\t09/26/2014\n518\t09/25/2014\n659\t09/24/2014\n783\t09/23/2014\n721\t09/22/2014\n101\t09/21/2014\n526\t09/20/2014\n911\t09/19/2014\n963\t09/18/2014\n844\t09/17/2014\n888\t09/16/2014\n857\t09/15/2014\n202\t09/14/2014\n633\t09/13/2014\n896\t09/12/2014\n981\t09/11/2014\n846\t09/10/2014\n871\t09/09/2014\n840\t09/08/2014\n230\t09/07/2014\n614\t09/06/2014\n860\t09/05/2014\n890\t09/04/2014\n897\t09/03/2014\n940\t09/02/2014\n129\t09/01/2014\n132\t08/31/2014\n417\t08/30/2014\n809\t08/29/2014\n823\t08/28/2014\n748\t08/27/2014\n837\t08/26/2014\n758\t08/25/2014\n147\t08/24/2014\n531\t08/23/2014\n836\t08/22/2014\n831\t08/21/2014\n796\t08/20/2014\n828\t08/19/2014\n715\t08/18/2014\n149\t08/17/2014\n461\t08/16/2014\n686\t08/15/2014\n906\t08/14/2014\n730\t08/13/2014\n843\t08/12/2014\n725\t08/11/2014\n159\t08/10/2014\n448\t08/09/2014\n791\t08/08/2014\n886\t08/07/2014\n795\t08/06/2014\n877\t08/05/2014\n766\t08/04/2014\n165\t08/03/2014\n491\t08/02/2014\n827\t08/01/2014\n806\t07/31/2014\n689\t07/30/2014\n699\t07/29/2014\n559\t07/28/2014\n171\t07/27/2014\n540\t07/26/2014\n806\t07/25/2014\n826\t07/24/2014\n741\t07/23/2014\n905\t07/22/2014\n790\t07/21/2014\n165\t07/20/2014\n517\t07/19/2014\n786\t07/18/2014\n813\t07/17/2014\n783\t07/16/2014\n744\t07/15/2014\n741\t07/14/2014\n1\t07/14/2013\n1\t07/14/2012\n158\t07/13/2014\n541\t07/12/2014\n1\t07/12/2013\n771\t07/11/2014\n932\t07/10/2014\n778\t07/09/2014\n836\t07/08/2014\n777\t07/07/2014\n140\t07/06/2014\n412\t07/05/2014\n83\t07/04/2014\n822\t07/03/2014\n732\t07/02/2014\n904\t07/01/2014\n860\t06/30/2015\n795\t06/30/2014\n771\t06/29/2015\n131\t06/29/2014\n162\t06/28/2015\n519\t06/28/2014\n511\t06/27/2015\n820\t06/27/2014\n852\t06/26/2015\n864\t06/26/2014\n863\t06/25/2015\n56\t06/25/2014\n826\t06/24/2015\n74\t06/24/2014\n907\t06/23/2015\n50\t06/23/2014\n761\t06/22/2015\n33\t06/22/2014\n143\t06/21/2015\n33\t06/21/2014\n435\t06/20/2015\n55\t06/20/2014\n841\t06/19/2015\n59\t06/19/2014\n932\t06/18/2015\n48\t06/18/2014\n774\t06/17/2015\n48\t06/17/2014\n889\t06/16/2015\n45\t06/16/2014\n761\t06/15/2015\n33\t06/15/2014\n1\t06/15/2013\n141\t06/14/2015\n33\t06/14/2014\n550\t06/13/2015\n35\t06/13/2014\n835\t06/12/2015\n23\t06/12/2014\n885\t06/11/2015\n15\t06/11/2014\n827\t06/10/2015\n6\t06/10/2014\n1\t06/10/2012\n920\t06/09/2015\n2\t06/09/2014\n807\t06/08/2015\n2\t06/08/2014\n151\t06/07/2015\n3\t06/07/2014\n550\t06/06/2015\n857\t06/05/2015\n3\t06/05/2014\n899\t06/04/2015\n1\t06/04/2014\n833\t06/03/2015\n1\t06/03/2014\n835\t06/02/2015\n1\t06/02/2014\n746\t06/01/2015\n1\t06/01/2014\n161\t05/31/2015\n500\t05/30/2015\n1\t05/30/2014\n868\t05/29/2015\n883\t05/28/2015\n2\t05/28/2014\n824\t05/27/2015\n904\t05/26/2015\n86\t05/25/2015\n135\t05/24/2015\n506\t05/23/2015\n857\t05/22/2015\n939\t05/21/2015\n2\t05/21/2014\n821\t05/20/2015\n885\t05/19/2015\n826\t05/18/2015\n195\t05/17/2015\n1\t05/17/2014\n534\t05/16/2015\n885\t05/15/2015\n717\t05/14/2015\n796\t05/13/2015\n912\t05/12/2015\n1\t05/12/2014\n823\t05/11/2015\n158\t05/10/2015\n1\t05/10/2014\n550\t05/09/2015\n1\t05/09/2014\n809\t05/08/2015\n939\t05/07/2015\n856\t05/06/2015\n868\t05/05/2015\n797\t05/04/2015\n165\t05/03/2015\n1\t05/03/2014\n459\t05/02/2015\n875\t05/01/2015\n876\t04/30/2015\n695\t04/29/2015\n1\t04/29/2014\n855\t04/28/2015\n768\t04/27/2015\n1\t04/27/2013\n192\t04/26/2015\n508\t04/25/2015\n824\t04/24/2015\n840\t04/23/2015\n753\t04/22/2015\n824\t04/21/2015\n593\t04/20/2015\n172\t04/19/2015\n547\t04/18/2015\n796\t04/17/2015\n905\t04/16/2015\n712\t04/15/2015\n880\t04/14/2015\n773\t04/13/2015\n184\t04/12/2015\n466\t04/11/2015\n635\t04/10/2015\n698\t04/09/2015\n757\t04/08/2015\n1\t04/08/2014\n848\t04/07/2015\n824\t04/06/2015\n137\t04/05/2015\n522\t04/04/2015\n662\t04/03/2015\n691\t04/02/2015\n789\t04/01/2015\n1\t04/01/2014\n749\t03/31/2015\n1\t03/31/2014\n675\t03/30/2015\n177\t03/29/2015\n519\t03/28/2015\n703\t03/27/2015\n733\t03/26/2015\n815\t03/25/2015\n1\t03/25/2014\n855\t03/24/2015\n802\t03/23/2015\n193\t03/22/2015\n1\t03/22/2014\n522\t03/21/2015\n730\t03/20/2015\n935\t03/19/2015\n1\t03/19/2014\n867\t03/18/2015\n877\t03/17/2015\n884\t03/16/2015\n178\t03/15/2015\n497\t03/14/2015\n921\t03/13/2015\n977\t03/12/2015\n860\t03/11/2015\n889\t03/10/2015\n977\t03/09/2015\n217\t03/08/2015\n529\t03/07/2015\n1\t03/07/2014\n626\t03/06/2015\n235\t03/05/2015\n735\t03/04/2015\n1009\t03/03/2015\n684\t03/02/2015\n184\t03/01/2015\n1\t03/01/2014\n605\t02/28/2015\n738\t02/27/2015\n758\t02/26/2015\n1\t02/26/2014\n911\t02/25/2015\n1\t02/25/2014\n1\t02/25/2012\n716\t02/24/2015\n656\t02/23/2015\n2\t02/23/2014\n150\t02/22/2015\n417\t02/21/2015\n560\t02/20/2015\n2\t02/20/2014\n724\t02/19/2015\n724\t02/18/2015\n1\t02/18/2014\n477\t02/17/2015\n560\t02/16/2015\n137\t02/15/2015\n389\t02/14/2015\n583\t02/13/2015\n765\t02/12/2015\n834\t02/11/2015\n1058\t02/10/2015\n2\t02/10/2014\n548\t02/09/2015\n2\t02/09/2014\n217\t02/08/2015\n600\t02/07/2015\n1\t02/07/2014\n704\t02/06/2015\n1\t02/06/2014\n692\t02/05/2015\n1\t02/05/2014\n732\t02/04/2015\n1\t02/04/2014\n590\t02/03/2015\n159\t02/02/2015\n215\t02/01/2015\n1\t02/01/2014\n563\t01/31/2015\n682\t01/30/2015\n697\t01/29/2015\n1\t01/29/2014\n648\t01/28/2015\n1\t01/28/2014\n42\t01/27/2015\n615\t01/26/2015\n311\t01/25/2015\n711\t01/24/2015\n1\t01/24/2014\n1597\t01/23/2015\n1685\t01/22/2015\n1\t01/22/2014\n1561\t01/21/2015\n1690\t01/20/2015\n3\t01/20/2014\n1114\t01/19/2015\n202\t01/18/2015\n2\t01/18/2014\n1067\t01/17/2015\n4\t01/17/2014\n1617\t01/16/2015\n2\t01/16/2014\n1820\t01/15/2015\n2\t01/15/2014\n1525\t01/14/2015\n11\t01/14/2014\n1643\t01/13/2015\n1125\t01/12/2015\n8\t01/12/2014\n394\t01/11/2015\n985\t01/10/2015\n13\t01/10/2014\n1117\t01/09/2015\n2\t01/09/2014\n1307\t01/08/2015\n2\t01/08/2014\n948\t01/07/2015\n890\t01/06/2015\n1104\t01/05/2015\n2\t01/05/2014\n112\t01/04/2015\n553\t01/03/2015\n1041\t01/02/2015\n60\t01/01/2015\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=177",
+              "$$hashKey": "object:34582"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586109490202_963817940",
+      "id": "paragraph_1586109490202_963817940",
+      "dateCreated": "2020-04-05T19:58:10+0200",
+      "dateStarted": "2020-04-05T21:56:00+0200",
+      "dateFinished": "2020-04-05T21:56:03+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26853"
+    },
+    {
+      "text": "%spark.sql\n\n\nSELECT MAX(housenumber) , state FROM people GROUP BY state\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-05T21:58:55+0200",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "max(housenumber)0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "state1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "max(housenumber)": "string",
+                      "state": "string"
+                    }
+                  },
+                  "updated": false,
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  }
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "state",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "max(housenumber)",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "max(housenumber)\tstate\nW\tAZ\nW\tSC\nW\tNS\nW\tLA\nW\tMN\nW\tNJ\nW\tDC\nW\tOR\nW\t99\nW\tVA\nW\tRI\nW\tKY\nS\tWY\n92\tBC\nW\tNH\nW\tMI\nW\tGV\nW\tNV\nW\tQB\nW\tWI\nW\tID\nW\tCA\nW\tCT\nW\tNE\nS\tMT\nW\tNC\nW\tVT\nW\tMD\nW\tDE\nW\tMO\nW\tIL\nW\tME\n133\tMB\nN\tND\nW\tWA\nW\tMS\nW\tAL\nW\tIN\nW\tOH\nW\tTN\nW\tIA\nW\tNM\nW\tPA\nW\tSD\nWW\tNY\nW\tON\n51\tSK\nE\tAB\nS\tPE\nW\tTX\nW\tWV\nW\tGA\nW\tMA\nW\tKS\nW\tCO\nW\tFL\nS\tAK\nW\tAR\n99 56\tNB\nW\tOK\nE\tPR\nW\tUT\nW\tDP\nW\tHI\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=178",
+              "$$hashKey": "object:35081"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=179",
+              "$$hashKey": "object:35082"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=180",
+              "$$hashKey": "object:35083"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=181",
+              "$$hashKey": "object:35084"
+            },
+            {
+              "jobUrl": "http://192.168.0.10:4040/jobs/job?id=182",
+              "$$hashKey": "object:35085"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1586115107920_813482977",
+      "id": "paragraph_1586115107920_813482977",
+      "dateCreated": "2020-04-05T21:31:47+0200",
+      "dateStarted": "2020-04-05T21:56:03+0200",
+      "dateFinished": "2020-04-05T21:56:07+0200",
+      "status": "FINISHED",
+      "$$hashKey": "object:26854"
+    }
+  ],
+  "name": "test",
+  "id": "2F4DTUZ4T",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-preview1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/test"
+}
